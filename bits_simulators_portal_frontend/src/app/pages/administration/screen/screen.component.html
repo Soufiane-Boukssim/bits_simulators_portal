@@ -1,0 +1,199 @@
+<div class="container">
+  <div class="identification">
+    <h2>Identification</h2>
+    <form class="form-grid">
+      <div class="form-group small-input">
+        <label for="profile">Profile:</label>
+        <input type="text" id="profile" name="profile">
+      </div>
+
+      <div class="form-group small-input">
+        <label for="numero">Numero:</label>
+        <input type="text" id="numero" name="numero">
+      </div>
+
+      <div class="form-group small-input">
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description">
+      </div>
+
+      <div class="form-group small-input">
+        <label for="language">Language:</label>
+        <select id="language" name="language">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <option value="esp">Español</option>
+        </select>
+      </div>
+    </form>
+  </div>
+
+  <div class="buttons">
+    <button (click)="showSection('layout')">Layout</button>
+    <button (click)="showSection('textObject')">Text/Object</button>
+    <button (click)="showSection('animatedScreen')">Ecran animé</button>
+  </div>
+
+  <div *ngIf="activeSection === 'layout'" class="section">
+    <div class="attributes-container">
+      <h3>Attribues</h3>
+      <form class="form-grid">
+        <div class="form-group">
+          <label for="font">Police:</label>
+          <select id="font" name="font"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="bgColor">Couleur de font:</label>
+          <select id="bgColor" name="bgColor"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="textColor">Couleur de text:</label>
+          <select id="textColor" name="textColor"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="line">Line:</label>
+          <input type="number" id="line" name="line" value="0">
+        </div>
+
+        <div class="form-group">
+          <label for="column">Colonne:</label>
+          <input type="number" id="column" name="column" value="0">
+        </div>
+
+        <div class="form-group">
+          <label for="blink">Clignotement:</label>
+          <input type="checkbox" id="blink" name="blink">
+        </div>
+
+        <div class="form-group">
+          <label for="clearScreen">Effacer écran:</label>
+          <input type="checkbox" id="clearScreen" name="clearScreen">
+        </div>
+      </form>
+    </div>
+
+    <div class="voice-container">
+      <h3>Voix</h3>
+      <form class="form-grid">
+        <div class="form-group">
+          <label for="voice">Nom:</label>
+          <select id="voice" name="voice"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="concatenation">N.Concatenation:</label>
+          <input type="number" id="concatenation" name="concatenation" value="0">
+        </div>
+
+        <div class="form-group">
+          <label for="displayCarrierName">Afficher Nom Porteur:</label>
+          <input type="checkbox" id="displayCarrierName" name="displayCarrierName" (change)="toggleCarrierName($event)">
+        </div>
+
+        <div class="carrier-fields" *ngIf="displayCarrierName">
+          <div class="form-group">
+            <label for="carrierFont">Police:</label>
+            <select id="carrierFont" name="carrierFont"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="carrierBgColor">Couleur de font:</label>
+            <select id="carrierBgColor" name="carrierBgColor"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="carrierLine">Line:</label>
+            <input type="number" id="carrierLine" name="carrierLine" value="0">
+          </div>
+
+          <div class="form-group">
+            <label for="carrierColumn">Colonne:</label>
+            <input type="number" id="carrierColumn" name="carrierColumn" value="0">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+<!--  -->
+<div *ngIf="activeSection === 'textObject'" class="section Text-Object-container">
+  <h2>Text/Object</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Objet</th>
+          <th>Line</th>
+          <th>Colonne</th>
+          <th>Numero d'objet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of textObjectItems; let i = index">
+          <td>
+            <select [(ngModel)]="item.objet">
+              <option value="image">Image</option>
+              <option value="logo">Logo</option>
+              <option value="ecran">Ecran</option>
+            </select>
+          </td>
+          <td>
+            <input type="number" min="0" [(ngModel)]="item.line" placeholder="Line">
+          </td>
+          <td>
+            <input type="number" min="0" [(ngModel)]="item.colonne" placeholder="Colonne">
+          </td>
+          <td>
+            <input type="number" min="0" [(ngModel)]="item.numeroObjet" placeholder="Numero d'objet">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="button-container">
+      <button (click)="addTextObjectRow()">Ajouter une ligne</button>
+      <button (click)="deleteAllTextObjectRow()">Supprimer tout</button>
+  </div>
+  </div>
+</div>
+<!--  -->
+  <div *ngIf="activeSection === 'animatedScreen'" class="section animated-screen-container">
+    <h2>Liste Ecrans Animées</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Ecran</th>
+            <th>Ordre écran</th>
+            <th>Temps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let screen of screens; let i = index">
+            <td>
+              <select [(ngModel)]="screen.name">
+                <option value="desc">Desc</option>
+                <option value="d">D</option>
+              </select>
+            </td>
+            <td>
+              <input type="number" min="0" [(ngModel)]="screen.order" placeholder="Ordre écran">
+            </td>
+            <td>
+              <input type="number" min="0" [(ngModel)]="screen.time" placeholder="Temps">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="button-container">
+        <button (click)="addRow()">Ajouter une ligne</button>
+        <button (click)="deleteAll()">Supprimer tout</button>
+      </div>
+    </div>
+  </div>
+  
+
+  
+
+</div>

@@ -1,0 +1,169 @@
+.container {
+  padding: 20px;
+  height: 80px;
+}
+
+.identification,
+.attributes-container,
+.voice-container,
+.animated-screen-container,
+.Text-Object-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.attributes-container,
+.voice-container,
+.animated-screen-container,
+.Text-Object-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 10px 20px;
+  justify-content: center;
+}
+
+.form-group {
+  display: contents;
+}
+
+.small-input input,
+.small-input select {
+  width: 350px;
+}
+
+label {
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+input,
+select {
+  flex: 1;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button {
+  width: 80px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section {
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+.carrier-fields {
+  display: contents;
+}
+
+#font {
+  width: 350px;
+}
+
+#voice {
+  width: 350px;
+}
+
+.text-container,
+.screen-container,
+.animated-screen-container,
+.Text-Object-container {
+  margin-bottom: 20px;
+}
+
+.text-container table,
+.screen-container table,
+.animated-screen-container table,
+.Text-Object-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.text-container th,
+.screen-container th,
+.animated-screen-container th,
+.text-container td,
+.screen-container td,
+.animated-screen-container td,
+.Text-Object-container th,
+.Text-Object-container td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+// .text-container th,
+// .screen-container th,
+.animated-screen-container th,
+.Text-Object-container th {
+  background-color: #e6e6e6;
+}
+
+.animated-screen-container select,
+.Text-Object-container select {
+  width: 350px; /* Définit la largeur du select */
+  margin: 0 auto; /* Centre le select horizontalement dans sa cellule */
+  display: block; /* Assure que le select est affiché comme un bloc pour centrer le margin */
+}
+
+.animated-screen-container input,
+.Text-Object-container input {
+  width: 100%; /* Prend toute la largeur disponible dans la cellule */
+  box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+}
+
+.animated-screen-container table td input,
+.Text-Object-container table td input{
+  text-align: center; /* Centre le texte à l'intérieur des inputs */
+}
+
+.table-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-container table {
+  width: 75%; /* 75% de la largeur du conteneur */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%; /* 25% de la largeur du conteneur */
+  align-items: flex-end;
+}
+
+.button-container button {
+  margin-bottom: 10px;
+}
+
+
+tbody {
+  tr:nth-child(even) {
+    background-color: white; /* Light grey for even rows */
+  }
+
+  tr:nth-child(odd) {
+    background-color: #e6e6e6; /* White for odd rows */
+  }
+}
+
+
